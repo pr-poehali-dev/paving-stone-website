@@ -6,9 +6,49 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import Icon from "@/components/ui/icon";
 import { useState } from "react";
 
+interface CallRequest {
+  name: string;
+  phone: string;
+  time: string;
+}
+
 const Index = () => {
   const [selectedTime, setSelectedTime] = useState("");
   const [contactMethod, setContactMethod] = useState("");
+  const [callRequest, setCallRequest] = useState<CallRequest>({ name: "", phone: "", time: "" });
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleCallRequest = async () => {
+    if (!callRequest.name || !callRequest.phone || !selectedTime) return;
+    
+    setIsSubmitting(true);
+    
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    
+    // Save to localStorage (in real app would send to backend)
+    const existingOrders = JSON.parse(localStorage.getItem('callOrders') || '[]');
+    const newOrder = {
+      id: Date.now().toString(),
+      name: callRequest.name,
+      phone: callRequest.phone,
+      time: selectedTime,
+      date: new Date().toLocaleString('ru-RU'),
+      status: 'new'
+    };
+    localStorage.setItem('callOrders', JSON.stringify([...existingOrders, newOrder]));
+    
+    setIsSubmitting(false);
+    setShowSuccess(true);
+    
+    // Reset form
+    setCallRequest({ name: "", phone: "", time: "" });
+    setSelectedTime("");
+    
+    // Hide success message after 3 seconds
+    setTimeout(() => setShowSuccess(false), 3000);
+  };
   const tileTypes = [
     {
       name: "Брусчатка классическая",
@@ -182,11 +222,15 @@ const Index = () => {
                 Качественная тротуарная плитка собственного производства
               </h1>
               <p className="text-xl text-gray-600 mb-8">
-                Более 15 лет производим долговечную тротуарную плитку. 
+                Более 8 лет производим долговечную тротуарную плитку. 
                 Современное оборудование, контроль качества, доставка по региону.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-gray-800 hover:bg-gray-900">
+                <Button 
+                  size="lg" 
+                  className="bg-gray-800 hover:bg-gray-900"
+                  onClick={() => window.location.href = '/catalog'}
+                >
                   <Icon name="ShoppingCart" size={20} className="mr-2" />
                   Посмотреть каталог
                 </Button>
@@ -416,11 +460,15 @@ const Index = () => {
                             <input 
                               type="text" 
                               placeholder="Ваше имя" 
+                              value={callRequest.name}
+                              onChange={(e) => setCallRequest({...callRequest, name: e.target.value})}
                               className="w-full p-2 bg-gray-700 border border-gray-600 rounded-lg text-sm text-white placeholder-gray-400"
                             />
                             <input 
                               type="tel" 
                               placeholder="Телефон" 
+                              value={callRequest.phone}
+                              onChange={(e) => setCallRequest({...callRequest, phone: e.target.value})}
                               className="w-full p-2 bg-gray-700 border border-gray-600 rounded-lg text-sm text-white placeholder-gray-400"
                             />
                             <Select value={selectedTime} onValueChange={setSelectedTime}>
@@ -434,10 +482,30 @@ const Index = () => {
                                 <SelectItem value="evening" className="text-white">Вечером (15:00-18:00)</SelectItem>
                               </SelectContent>
                             </Select>
-                            <Button className="w-full bg-white text-gray-900 hover:bg-gray-100">
-                              <Icon name="Phone" size={16} className="mr-2" />
-                              Заказать звонок
-                            </Button>
+                            
+                            {showSuccess ? (
+                              <div className="flex items-center justify-center p-4 bg-green-100 rounded-lg">
+                                <div className="flex items-center space-x-2 text-green-800">
+                                  <div className="animate-scale-in">
+                                    <Icon name="CheckCircle" size={24} className="text-green-600" />
+                                  </div>
+                                  <span className="font-medium">Заказ принят! Ожидайте звонка</span>
+                                </div>
+                              </div>
+                            ) : (
+                              <Button 
+                                className="w-full bg-white text-gray-900 hover:bg-gray-100"
+                                onClick={handleCallRequest}
+                                disabled={isSubmitting || !callRequest.name || !callRequest.phone || !selectedTime}
+                              >
+                                {isSubmitting ? (
+                                  <Icon name="Loader2" size={16} className="mr-2 animate-spin" />
+                                ) : (
+                                  <Icon name="Phone" size={16} className="mr-2" />
+                                )}
+                                {isSubmitting ? "Отправка..." : "Заказать звонок"}
+                              </Button>
+                            )}
                           </div>
                         </div>
                       </div>
