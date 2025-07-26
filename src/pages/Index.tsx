@@ -121,7 +121,7 @@ const Index = () => {
                     <Button 
                       variant="outline" 
                       className="flex items-center justify-center gap-2 h-12"
-                      onClick={() => window.open('https://wa.me/79123456789', '_blank')}
+                      onClick={() => window.open('https://wa.me/79788244502', '_blank')}
                     >
                       <Icon name="MessageCircle" size={20} className="text-green-600" />
                       WhatsApp
@@ -327,28 +327,29 @@ const Index = () => {
                   <Icon name="MapPin" size={24} className="text-gray-300" />
                   <div>
                     <p className="font-semibold">Адрес завода</p>
-                    <p className="text-gray-300">г. Москва, Промышленная ул., 15</p>
+                    <p className="text-gray-300">Республика Крым, Джанкойский район, пер. Луначарского 1</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-4">
                   <Icon name="Phone" size={24} className="text-gray-300" />
                   <div>
                     <p className="font-semibold">Телефон</p>
-                    <p className="text-gray-300">+7 (495) 123-45-67</p>
+                    <p className="text-gray-300">+7 (978) 824-45-02</p>
+                    <p className="text-gray-300">+7 (978) 607-63-02</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-4">
                   <Icon name="Mail" size={24} className="text-gray-300" />
                   <div>
                     <p className="font-semibold">Email</p>
-                    <p className="text-gray-300">info@betonstroy.ru</p>
+                    <p className="text-gray-300">tash-2021@mail.ru</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-4">
                   <Icon name="Clock" size={24} className="text-gray-300" />
                   <div>
                     <p className="font-semibold">Режим работы</p>
-                    <p className="text-gray-300">Пн-Пт: 8:00-18:00, Сб: 9:00-15:00</p>
+                    <p className="text-gray-300">Пн-Сб: 8:00-17:00</p>
                   </div>
                 </div>
               </div>
@@ -394,7 +395,7 @@ const Index = () => {
                           <Button 
                             variant="outline" 
                             className="flex items-center justify-center gap-2 h-12 bg-gray-700 border-gray-600 text-white hover:bg-gray-600"
-                            onClick={() => window.open('https://wa.me/79123456789', '_blank')}
+                            onClick={() => window.open('https://wa.me/79788244502', '_blank')}
                           >
                             <Icon name="MessageCircle" size={20} className="text-green-400" />
                             WhatsApp
