@@ -121,7 +121,7 @@ const Index = () => {
                     <Button 
                       variant="outline" 
                       className="flex items-center justify-center gap-2 h-12"
-                      onClick={() => window.open('https://wa.me/79788244502', '_blank')}
+                      onClick={() => window.open('https://wa.me/79788244503', '_blank')}
                     >
                       <Icon name="MessageCircle" size={20} className="text-green-600" />
                       WhatsApp
@@ -334,7 +334,7 @@ const Index = () => {
                   <Icon name="Phone" size={24} className="text-gray-300" />
                   <div>
                     <p className="font-semibold">Телефон</p>
-                    <p className="text-gray-300">+7 (978) 824-45-02</p>
+                    <p className="text-gray-300">+7 (978) 824-45-03</p>
                     <p className="text-gray-300">+7 (978) 607-63-02</p>
                   </div>
                 </div>
@@ -395,7 +395,7 @@ const Index = () => {
                           <Button 
                             variant="outline" 
                             className="flex items-center justify-center gap-2 h-12 bg-gray-700 border-gray-600 text-white hover:bg-gray-600"
-                            onClick={() => window.open('https://wa.me/79788244502', '_blank')}
+                            onClick={() => window.open('https://wa.me/79788244503', '_blank')}
                           >
                             <Icon name="MessageCircle" size={20} className="text-green-400" />
                             WhatsApp
@@ -450,30 +450,38 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Payment Methods */}
-      <section className="bg-gray-50 py-8">
+      {/* Map Section */}
+      <section className="bg-gray-100 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <p className="text-sm text-gray-600 mb-6">Принимаем к оплате</p>
-            <div className="flex flex-wrap items-center justify-center gap-8">
-              <div className="bg-white px-4 py-2 rounded-lg shadow-sm border border-gray-200 flex items-center">
-                <span className="text-blue-700 font-bold text-lg">РНКБ</span>
+          <div className="text-center mb-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">Как нас найти</h2>
+            <p className="text-gray-600">Республика Крым, Джанкойский район, пер. Луначарского 1</p>
+          </div>
+          
+          <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+            <div className="h-96 bg-gradient-to-br from-blue-50 to-gray-100 relative">
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center">
+                  <div className="bg-red-500 w-8 h-8 rounded-full mx-auto mb-3 flex items-center justify-center">
+                    <Icon name="MapPin" size={20} className="text-white" />
+                  </div>
+                  <div className="bg-white px-6 py-4 rounded-xl shadow-lg border">
+                    <h3 className="font-semibold text-gray-900">Завод БетонСтрой</h3>
+                    <p className="text-sm text-gray-600">пер. Луначарского 1</p>
+                    <p className="text-sm text-gray-600">Джанкойский район</p>
+                  </div>
+                </div>
               </div>
-              <div className="bg-white px-4 py-2 rounded-lg shadow-sm border border-gray-200 flex items-center">
-                <span className="text-blue-600 font-bold text-lg">ВТБ</span>
-              </div>
-              <div className="bg-white px-4 py-2 rounded-lg shadow-sm border border-gray-200 flex items-center">
-                <span className="text-green-600 font-bold text-lg">СБЕР</span>
-              </div>
-              <div className="bg-white px-4 py-2 rounded-lg shadow-sm border border-gray-200 flex items-center">
-                <span className="text-blue-800 font-bold text-lg">VISA</span>
-              </div>
-              <div className="bg-white px-4 py-2 rounded-lg shadow-sm border border-gray-200 flex items-center">
-                <span className="text-yellow-500 font-bold text-lg">Тинькофф</span>
-              </div>
-              <div className="bg-white px-4 py-2 rounded-lg shadow-sm border border-gray-200 flex items-center">
-                <span className="text-purple-600 font-bold text-lg">ЮMoney</span>
-              </div>
+              
+              {/* Decorative elements */}
+              <div className="absolute top-4 left-4 w-2 h-2 bg-blue-300 rounded-full opacity-60"></div>
+              <div className="absolute top-8 right-8 w-3 h-3 bg-green-300 rounded-full opacity-40"></div>
+              <div className="absolute bottom-6 left-6 w-2 h-2 bg-gray-300 rounded-full opacity-50"></div>
+              <div className="absolute bottom-4 right-4 w-4 h-4 bg-blue-200 rounded-full opacity-30"></div>
+              
+              {/* Roads simulation */}
+              <div className="absolute top-20 left-0 w-full h-1 bg-gray-300 opacity-60 transform rotate-12"></div>
+              <div className="absolute bottom-20 left-0 w-full h-1 bg-gray-300 opacity-60 transform -rotate-6"></div>
             </div>
           </div>
         </div>
@@ -482,14 +490,41 @@ const Index = () => {
       {/* Footer */}
       <footer className="bg-black text-white py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center space-x-2 mb-4 md:mb-0">
-              <Icon name="Building2" size={24} />
-              <span className="font-bold">БетонСтрой</span>
+          <div className="space-y-6">
+            <div className="flex flex-col md:flex-row justify-between items-center">
+              <div className="flex items-center space-x-2 mb-4 md:mb-0">
+                <Icon name="Building2" size={24} />
+                <span className="font-bold">БетонСтрой</span>
+              </div>
+              
+              {/* Payment methods icons */}
+              <div className="flex items-center space-x-4 mb-4 md:mb-0">
+                <div className="w-12 h-8 bg-blue-700 rounded flex items-center justify-center">
+                  <span className="text-white text-xs font-bold">Р</span>
+                </div>
+                <div className="w-12 h-8 bg-blue-600 rounded flex items-center justify-center">
+                  <span className="text-white text-xs font-bold">В</span>
+                </div>
+                <div className="w-12 h-8 bg-green-600 rounded flex items-center justify-center">
+                  <span className="text-white text-xs font-bold">С</span>
+                </div>
+                <div className="w-12 h-8 bg-blue-800 rounded flex items-center justify-center">
+                  <span className="text-white text-xs font-bold">V</span>
+                </div>
+                <div className="w-12 h-8 bg-yellow-500 rounded flex items-center justify-center">
+                  <span className="text-white text-xs font-bold">Т</span>
+                </div>
+                <div className="w-12 h-8 bg-purple-600 rounded flex items-center justify-center">
+                  <span className="text-white text-xs font-bold">Ю</span>
+                </div>
+              </div>
             </div>
-            <p className="text-gray-400 text-sm">
-              © 2024 БетонСтрой. Все права защищены.
-            </p>
+            
+            <div className="text-center">
+              <p className="text-gray-400 text-sm">
+                © 2024 БетонСтрой. Все права защищены.
+              </p>
+            </div>
           </div>
         </div>
       </footer>
