@@ -450,6 +450,35 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Payment Methods */}
+      <section className="bg-gray-50 py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <p className="text-sm text-gray-600 mb-6">Принимаем к оплате</p>
+            <div className="flex flex-wrap items-center justify-center gap-8">
+              <div className="bg-white px-4 py-2 rounded-lg shadow-sm border border-gray-200 flex items-center">
+                <span className="text-blue-700 font-bold text-lg">РНКБ</span>
+              </div>
+              <div className="bg-white px-4 py-2 rounded-lg shadow-sm border border-gray-200 flex items-center">
+                <span className="text-blue-600 font-bold text-lg">ВТБ</span>
+              </div>
+              <div className="bg-white px-4 py-2 rounded-lg shadow-sm border border-gray-200 flex items-center">
+                <span className="text-green-600 font-bold text-lg">СБЕР</span>
+              </div>
+              <div className="bg-white px-4 py-2 rounded-lg shadow-sm border border-gray-200 flex items-center">
+                <span className="text-blue-800 font-bold text-lg">VISA</span>
+              </div>
+              <div className="bg-white px-4 py-2 rounded-lg shadow-sm border border-gray-200 flex items-center">
+                <span className="text-yellow-500 font-bold text-lg">Тинькофф</span>
+              </div>
+              <div className="bg-white px-4 py-2 rounded-lg shadow-sm border border-gray-200 flex items-center">
+                <span className="text-purple-600 font-bold text-lg">ЮMoney</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="bg-black text-white py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
