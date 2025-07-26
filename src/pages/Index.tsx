@@ -1,9 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import Icon from "@/components/ui/icon";
+import { useState } from "react";
 
 const Index = () => {
+  const [selectedTime, setSelectedTime] = useState("");
+  const [contactMethod, setContactMethod] = useState("");
   const tileTypes = [
     {
       name: "Брусчатка классическая",
@@ -97,10 +102,73 @@ const Index = () => {
               <a href="#production" className="text-gray-700 hover:text-gray-900">Производство</a>
               <a href="#contacts" className="text-gray-700 hover:text-gray-900">Контакты</a>
             </nav>
-            <Button variant="outline">
-              <Icon name="Phone" size={16} className="mr-2" />
-              Заказать звонок
-            </Button>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button variant="outline">
+                  <Icon name="Phone" size={16} className="mr-2" />
+                  Заказать звонок
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-md">
+                <DialogHeader>
+                  <DialogTitle>Выберите способ связи</DialogTitle>
+                  <DialogDescription>
+                    Как удобнее с вами связаться?
+                  </DialogDescription>
+                </DialogHeader>
+                <div className="space-y-4">
+                  <div className="grid grid-cols-2 gap-3">
+                    <Button 
+                      variant="outline" 
+                      className="flex items-center justify-center gap-2 h-12"
+                      onClick={() => window.open('https://wa.me/79123456789', '_blank')}
+                    >
+                      <Icon name="MessageCircle" size={20} className="text-green-600" />
+                      WhatsApp
+                    </Button>
+                    <Button 
+                      variant="outline" 
+                      className="flex items-center justify-center gap-2 h-12"
+                      onClick={() => window.open('https://t.me/betonstroy', '_blank')}
+                    >
+                      <Icon name="Send" size={20} className="text-blue-600" />
+                      Telegram
+                    </Button>
+                  </div>
+                  
+                  <div className="border-t pt-4">
+                    <p className="text-sm text-gray-600 mb-3">Или заказать обратный звонок:</p>
+                    <div className="space-y-3">
+                      <input 
+                        type="text" 
+                        placeholder="Ваше имя" 
+                        className="w-full p-2 border border-gray-300 rounded-lg text-sm"
+                      />
+                      <input 
+                        type="tel" 
+                        placeholder="Телефон" 
+                        className="w-full p-2 border border-gray-300 rounded-lg text-sm"
+                      />
+                      <Select value={selectedTime} onValueChange={setSelectedTime}>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Удобное время звонка" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="now">Сейчас</SelectItem>
+                          <SelectItem value="morning">Утром (9:00-12:00)</SelectItem>
+                          <SelectItem value="afternoon">Днем (12:00-15:00)</SelectItem>
+                          <SelectItem value="evening">Вечером (15:00-18:00)</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      <Button className="w-full">
+                        <Icon name="Phone" size={16} className="mr-2" />
+                        Заказать звонок
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </DialogContent>
+            </Dialog>
           </div>
         </div>
       </header>
@@ -308,9 +376,72 @@ const Index = () => {
                       className="w-full p-3 rounded-lg bg-gray-700 border border-gray-600 text-white placeholder-gray-400"
                     />
                   </div>
-                  <Button className="w-full bg-white text-gray-900 hover:bg-gray-100">
-                    Заказать звонок
-                  </Button>
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button className="w-full bg-white text-gray-900 hover:bg-gray-100">
+                        Заказать звонок
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent className="sm:max-w-md bg-gray-800 border-gray-700">
+                      <DialogHeader>
+                        <DialogTitle className="text-white">Выберите способ связи</DialogTitle>
+                        <DialogDescription className="text-gray-300">
+                          Как удобнее с вами связаться?
+                        </DialogDescription>
+                      </DialogHeader>
+                      <div className="space-y-4">
+                        <div className="grid grid-cols-2 gap-3">
+                          <Button 
+                            variant="outline" 
+                            className="flex items-center justify-center gap-2 h-12 bg-gray-700 border-gray-600 text-white hover:bg-gray-600"
+                            onClick={() => window.open('https://wa.me/79123456789', '_blank')}
+                          >
+                            <Icon name="MessageCircle" size={20} className="text-green-400" />
+                            WhatsApp
+                          </Button>
+                          <Button 
+                            variant="outline" 
+                            className="flex items-center justify-center gap-2 h-12 bg-gray-700 border-gray-600 text-white hover:bg-gray-600"
+                            onClick={() => window.open('https://t.me/betonstroy', '_blank')}
+                          >
+                            <Icon name="Send" size={20} className="text-blue-400" />
+                            Telegram
+                          </Button>
+                        </div>
+                        
+                        <div className="border-t border-gray-600 pt-4">
+                          <p className="text-sm text-gray-300 mb-3">Или заказать обратный звонок:</p>
+                          <div className="space-y-3">
+                            <input 
+                              type="text" 
+                              placeholder="Ваше имя" 
+                              className="w-full p-2 bg-gray-700 border border-gray-600 rounded-lg text-sm text-white placeholder-gray-400"
+                            />
+                            <input 
+                              type="tel" 
+                              placeholder="Телефон" 
+                              className="w-full p-2 bg-gray-700 border border-gray-600 rounded-lg text-sm text-white placeholder-gray-400"
+                            />
+                            <Select value={selectedTime} onValueChange={setSelectedTime}>
+                              <SelectTrigger className="bg-gray-700 border-gray-600 text-white">
+                                <SelectValue placeholder="Удобное время звонка" />
+                              </SelectTrigger>
+                              <SelectContent className="bg-gray-700 border-gray-600">
+                                <SelectItem value="now" className="text-white">Сейчас</SelectItem>
+                                <SelectItem value="morning" className="text-white">Утром (9:00-12:00)</SelectItem>
+                                <SelectItem value="afternoon" className="text-white">Днем (12:00-15:00)</SelectItem>
+                                <SelectItem value="evening" className="text-white">Вечером (15:00-18:00)</SelectItem>
+                              </SelectContent>
+                            </Select>
+                            <Button className="w-full bg-white text-gray-900 hover:bg-gray-100">
+                              <Icon name="Phone" size={16} className="mr-2" />
+                              Заказать звонок
+                            </Button>
+                          </div>
+                        </div>
+                      </div>
+                    </DialogContent>
+                  </Dialog>
                 </CardContent>
               </Card>
             </div>
