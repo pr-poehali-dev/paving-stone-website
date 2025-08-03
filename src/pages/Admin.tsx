@@ -73,7 +73,7 @@ const Admin = () => {
               <Icon name="Shield" size={32} className="text-gray-700" />
               <div>
                 <h1 className="text-xl font-bold text-gray-900">Админ панель</h1>
-                <p className="text-sm text-gray-600">БетонСтрой</p>
+                <p className="text-sm text-gray-600">Таш Крым</p>
               </div>
             </div>
             <Button variant="outline">

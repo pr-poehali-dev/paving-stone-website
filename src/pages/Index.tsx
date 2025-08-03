@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
@@ -100,10 +101,70 @@ const Index = () => {
               </button>
             </nav>
             <div className="flex items-center space-x-4">
-              <div className="hidden md:flex items-center space-x-2 text-sm text-gray-600">
-                <Icon name="Phone" size={16} />
-                <span>+7 (495) 123-45-67</span>
-              </div>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button variant="ghost" size="sm" className="text-gray-600 hover:text-blue-600">
+                    <Icon name="Phone" size={16} className="mr-2" />
+                    <span className="hidden md:inline">Узнать номер</span>
+                    <Icon name="ChevronDown" size={14} className="ml-1" />
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-md">
+                  <DialogHeader>
+                    <DialogTitle>Выберите способ связи</DialogTitle>
+                    <DialogDescription>
+                      Звонки принимаются с 8:00 до 17:00, с понедельника по субботу
+                    </DialogDescription>
+                  </DialogHeader>
+                  <div className="space-y-4">
+                    <div className="space-y-3">
+                      <h4 className="font-medium text-sm text-gray-700">Телефоны для звонков:</h4>
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                          <div className="flex items-center space-x-3">
+                            <Icon name="Phone" size={18} className="text-blue-600" />
+                            <span className="font-medium">+7 (978) 237-71-00</span>
+                          </div>
+                          <Button size="sm" onClick={() => window.open('tel:+79782377100')}>
+                            Позвонить
+                          </Button>
+                        </div>
+                        <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                          <div className="flex items-center space-x-3">
+                            <Icon name="Phone" size={18} className="text-blue-600" />
+                            <span className="font-medium">+7 (978) 237-74-00</span>
+                          </div>
+                          <Button size="sm" onClick={() => window.open('tel:+79782377400')}>
+                            Позвонить
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="border-t pt-4">
+                      <h4 className="font-medium text-sm text-gray-700 mb-3">Мессенджеры:</h4>
+                      <div className="space-y-2">
+                        <Button 
+                          variant="outline" 
+                          className="w-full justify-start text-green-600 border-green-200 hover:bg-green-50"
+                          onClick={() => window.open('https://wa.me/79782377100', '_blank')}
+                        >
+                          <Icon name="MessageCircle" size={18} className="mr-3" />
+                          WhatsApp: +7 (978) 237-71-00
+                        </Button>
+                        <Button 
+                          variant="outline" 
+                          className="w-full justify-start text-blue-600 border-blue-200 hover:bg-blue-50"
+                          onClick={() => window.open('https://t.me/tashcrimea', '_blank')}
+                        >
+                          <Icon name="Send" size={18} className="mr-3" />
+                          Telegram канал
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                </DialogContent>
+              </Dialog>
               <Link to="/catalog">
                 <Button variant="outline" size="sm">
                   <Icon name="ShoppingBag" size={16} className="mr-2" />
@@ -141,7 +202,7 @@ const Index = () => {
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-white text-white hover:bg-white hover:text-blue-700 text-lg px-8 py-3"
+                className="border-white text-white bg-white/10 hover:bg-white hover:text-blue-700 text-lg px-8 py-3 backdrop-blur-sm"
                 onClick={() => scrollToSection('contact')}
               >
                 <Icon name="Calculator" size={20} className="mr-2" />
@@ -185,7 +246,7 @@ const Index = () => {
                 <Icon name="Truck" size={32} className="text-orange-600" />
               </div>
               <h3 className="text-xl font-semibold mb-2">Быстрая доставка</h3>
-              <p className="text-gray-600">Доставляем по Москве и области в кратчайшие сроки</p>
+              <p className="text-gray-600">Доставляем по всей России и в новые регионы</p>
             </div>
           </div>
         </div>
@@ -334,8 +395,8 @@ const Index = () => {
                 <Icon name="HeadphonesIcon" size={24} className="text-red-600" />
               </div>
               <div>
-                <h3 className="text-lg font-semibold mb-2">Поддержка 24/7</h3>
-                <p className="text-gray-600">Наши специалисты всегда готовы помочь с выбором и консультацией</p>
+                <h3 className="text-lg font-semibold mb-2">Консультации</h3>
+                <p className="text-gray-600">Консультируем по выбору плитки с 8:00 до 17:00, пн-сб</p>
               </div>
             </div>
 
@@ -369,7 +430,10 @@ const Index = () => {
                   </div>
                   <div>
                     <p className="font-semibold">Телефон</p>
-                    <p className="text-gray-300">+7 (495) 123-45-67</p>
+                    <div className="space-y-1">
+                      <p className="text-gray-300">+7 (978) 237-71-00</p>
+                      <p className="text-gray-300">+7 (978) 237-74-00</p>
+                    </div>
                   </div>
                 </div>
                 
@@ -379,7 +443,7 @@ const Index = () => {
                   </div>
                   <div>
                     <p className="font-semibold">Email</p>
-                    <p className="text-gray-300">info@plitkastroy.ru</p>
+                    <p className="text-gray-300">tash-2021@mail.ru</p>
                   </div>
                 </div>
                 
@@ -389,7 +453,7 @@ const Index = () => {
                   </div>
                   <div>
                     <p className="font-semibold">Адрес</p>
-                    <p className="text-gray-300">г. Москва, ул. Производственная, д. 15</p>
+                    <p className="text-gray-300">Республика Крым, г. Джанкой, с. Днепровка, пер. Луначарского 1</p>
                   </div>
                 </div>
                 
@@ -399,7 +463,7 @@ const Index = () => {
                   </div>
                   <div>
                     <p className="font-semibold">Режим работы</p>
-                    <p className="text-gray-300">Пн-Пт: 8:00-18:00, Сб: 9:00-15:00</p>
+                    <p className="text-gray-300">Пн-Сб: 8:00-17:00</p>
                   </div>
                 </div>
               </div>
