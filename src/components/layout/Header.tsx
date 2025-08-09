@@ -2,12 +2,17 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import Icon from "@/components/ui/icon";
 import { Link } from 'react-router-dom';
+import { trackEvent } from '@/lib/supabase';
 
 interface HeaderProps {
   scrollToSection: (id: string) => void;
 }
 
 const Header = ({ scrollToSection }: HeaderProps) => {
+  const handlePhoneReveal = (phone: string) => {
+    trackEvent('phone_reveal', { phone });
+  };
+
   return (
     <header className="bg-white shadow-sm border-b sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -72,7 +77,10 @@ const Header = ({ scrollToSection }: HeaderProps) => {
                           <Icon name="Phone" size={18} className="text-blue-600" />
                           <span className="font-medium">+7 (978) 237-71-00</span>
                         </div>
-                        <Button size="sm" onClick={() => window.open('tel:+79782377100')}>
+                        <Button size="sm" onClick={() => {
+                          handlePhoneReveal('+79782377100');
+                          window.open('tel:+79782377100');
+                        }}>
                           Позвонить
                         </Button>
                       </div>
@@ -81,7 +89,10 @@ const Header = ({ scrollToSection }: HeaderProps) => {
                           <Icon name="Phone" size={18} className="text-blue-600" />
                           <span className="font-medium">+7 (978) 237-74-00</span>
                         </div>
-                        <Button size="sm" onClick={() => window.open('tel:+79782377400')}>
+                        <Button size="sm" onClick={() => {
+                          handlePhoneReveal('+79782377400');
+                          window.open('tel:+79782377400');
+                        }}>
                           Позвонить
                         </Button>
                       </div>
